@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>防抖</title>
+  </head>
+  <body>
+    <script>
+      // debounce 防抖 事件触发后n秒后执行，n秒内再次触发结束之前的请求，按最新请求重新计时
+      // 第一版
+      function debounce(func, wait) {
+        var timeout;
+        return function () {
+          clearTimeout(timeout);
+          timeout = setTimeout(func, wait);
+        };
+      }
+    </script>
+  </body>
+</html>

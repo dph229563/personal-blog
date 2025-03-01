@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Promise</title>
+  </head>
+
+  <body>
+    <script>
+      class Commitment {
+        static PENDING = "待定";
+        static FULFILLED = "成功";
+        static REJECTED = "拒绝";
+        constructor(func) {
+          this.status = Commitment.PENDING;
+          this.result = null;
+          this.resolveCallbaks = [];
+          this.rejectCallbaks = [];
+          try {
+            func(this.resolve.bind(this), this.reject.bind(this));
+          } catch (error) {
+            this.reject(error);
+          }
+        }
+        resolve(result) {
+          setTimeout(() => {
+            if (this.status === Commitment.PENDING) {
+              this.status = Commitment.FULFILLED;
+              this.result = result;
+              this.resolveCallbaks.forEach((callback) => {
+                callback(result);
+              });
+            }
+          });
+        }
+        reject(result) {
+          setTimeout(() => {
+            if (this.status === Commitment.PENDING) {
+              this.status = Commitment.REJECTED;
+              this.result = result;
+              this.rejectCallbaks.forEach((callback) => {
+                callback(result);
+              });
+            }
+          });
+        }
+        then(onFULFILLED, onREJECTED) {
+          onFULFILLED = typeof onFULFILLED === "function" ? onFULFILLED : () => {};
+          onREJECTED = typeof onREJECTED === "function" ? onREJECTED : () => {};
+          if (this.status === Commitment.PENDING) {
+            this.resolveCallbaks.push(onFULFILLED);
+            this.rejectCallbaks.push(onREJECTED);
+          }
+          if (this.status === Commitment.FULFILLED) {
+            setTimeout(() => {
+              onFULFILLED(this.result);
+            });
+          }
+          if (this.status === Commitment.REJECTED) {
+            setTimeout(() => {
+              onREJECTED(this.result);
+            });
+          }
+        }
+      }
+    </script>
+  </body>
+</html>

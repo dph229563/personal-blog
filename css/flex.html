@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flex 布局</title>
+    <style>
+        .container {
+            display: flex;
+            justify-content: flex-start;
+            width: 600px;
+            background-color: azure;
+        }
+
+        .item {
+            flex: 1;
+            display: flex;
+        }
+
+        .itemChild {
+            flex: 1;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="item">
+            <div class="itemChild">333</div>
+            <div class="itemChild">444</div>
+        </div>
+        <div class="item">2</div>
+        <div class="item">3</div>
+    </div>
+    <script>
+        // 1. https://juejin.cn/post/7004622232378966046#heading-10
+        // 2. https://juejin.cn/post/7116877786857504781#heading-4
+        // 3. 参考视频：https://www.bilibili.com/video/BV1VK421x7SY/?spm_id_from=333.337.search-card.all.click&vd_source=7e6cfb07eb6e16a013738b6fc9132c6e
+        // 3.1 对应文案 https://course.doubleslash.cn/#/catList_543/246/catTree_123/bda/article_866/e6b39ba865f0760c000978d7
+
+
+
+        // flex-grow   剩余空间放大比例
+        // flex-shrink 溢出空间缩小比例 和 基准值(basic有关)
+        // flex-basic  初始宽度
+    </script>
+</body>
+
+</html>

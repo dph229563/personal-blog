@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grid</title>
+    <style>
+        .box {
+            margin: 0px auto;
+            width: 90%;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-template-rows: repeat(5,200px)
+        }
+
+        .box .item {
+            background-color: thistle;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .box .item:nth-child(2n+1) {
+            background-color: aliceblue;
+        }
+        .box .item:nth-child(1){
+            grid-column: 1/3;
+            grid-row: 1/3;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box">
+        <div class="item">1</div>
+        <div class="item">1</div>
+        <div class="item">1</div>
+        <div class="item">1</div>
+        <div class="item">1</div>
+        <div class="item">1</div>
+        <div class="item">1</div>
+        <div class="item">1</div>
+        <div class="item">1</div>
+    </div>
+    <script>
+        // https://www.bilibili.com/video/BV1gw41167gh/?spm_id_from=333.337.search-card.all.click&vd_source=7e6cfb07eb6e16a013738b6fc9132c6e
+    </script>
+</body>
+
+</html>
